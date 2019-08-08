@@ -1,26 +1,25 @@
 var mysql  = require('mysql');
-var connection;
+var sql;
 function conexion(){
-        connection = mysql.createConnection({
+        sql = mysql.createConnection({
         host     : 'us-cdbr-iron-east-02.cleardb.net',
         user     : 'b54cebd94c131a',
         password : '785b23e4',
         database : 'heroku_d6c3f5493729dde'
       });
       
-      connection.connect(function(err) {
+      sql.connect(function(err) {
         if (err) {
           console.error('error connecting: ' + err.stack);
           return;
         }
       
         console.log('connected as id ' + connection.threadId);
-        sql = connection;
       });
 
 }
 function desconexion(){
-    connection.end(function(err) {
+    sql.end(function(err) {
         // The connection is terminated now
       });
 }
