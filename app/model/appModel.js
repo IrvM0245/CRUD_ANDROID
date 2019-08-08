@@ -1,5 +1,16 @@
 var mysql  = require('mysql');
 var sql;
+
+var Person = function(person){
+    this.id = person.id;
+    this.nombre = person.nombre;
+    this.materno = person.materno;
+    this.paterno = person.paterno;
+    this.rfc = person.rfc;
+    this.domicilio = person.domicilio;
+    this.localidad = person.localidad;
+};
+
 function conexion(){
         sql = mysql.createConnection({
         host     : 'us-cdbr-iron-east-02.cleardb.net',
@@ -14,7 +25,7 @@ function conexion(){
           return;
         }
       
-        console.log('connected as id ' + connection.threadId);
+        console.log('connected as id ' + sql.threadId);
       });
 
 }
@@ -27,15 +38,6 @@ function desconexion(){
 //var sql = require('./db.js');
 
 //Restaurant object constructor
-var Person = function(person){
-    this.id = person.id;
-    this.nombre = person.nombre;
-    this.materno = person.materno;
-    this.paterno = person.paterno;
-    this.rfc = person.rfc;
-    this.domicilio = person.domicilio;
-    this.localidad = person.localidad;
-};
 
 
 Person.Mensaje = function (result)  {
