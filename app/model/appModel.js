@@ -19,7 +19,9 @@ function conexion(){
 
 }
 function desconexion(){
-    conection.c
+    connection.end(function(err) {
+        // The connection is terminated now
+      });
 }
 var conection//
 //var sql = require('./db.js');
