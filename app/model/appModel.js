@@ -1,4 +1,4 @@
-var mysql      = require('mysql');
+var mysql  = require('mysql');
 var connection;
 function conexion(){
         connection = mysql.createConnection({
@@ -15,6 +15,7 @@ function conexion(){
         }
       
         console.log('connected as id ' + connection.threadId);
+        sql = connection;
       });
 
 }
@@ -23,7 +24,7 @@ function desconexion(){
         // The connection is terminated now
       });
 }
-var conection//
+
 //var sql = require('./db.js');
 
 //Restaurant object constructor
@@ -38,6 +39,10 @@ var Person = function(person){
 };
 
 
+Person.Mensaje = function (result)  {
+	result('Hello world!');
+};
+
 Person.getAllPerson = function (result) {
     conexion();
     sql.query("Select * from persona", function (err, res) {
@@ -50,8 +55,9 @@ Person.getAllPerson = function (result) {
               console.log('Personas: ', res);
              result(null, res);
             }
-            desconexion();
+
         });
+        desconexion();
 };
 
 Person.createPerson = function (newPerson, result) {
@@ -66,8 +72,8 @@ Person.createPerson = function (newPerson, result) {
                     console.log(res.insertId);
                     result(null, res.insertId);
                 }
-                desconexion();
             });
+            desconexion();
 };
 
 Person.getPersonById = function (personId, result) {
@@ -80,8 +86,8 @@ Person.getPersonById = function (personId, result) {
                 else{
                     result(null, res);
                 }
-                desconexion();
             });
+            desconexion();
 };
 
 Person.updateById = function(id, person, result){
@@ -94,8 +100,8 @@ Person.updateById = function(id, person, result){
            else{
              result(null, res);
                 }
-                desconexion();
             });
+            desconexion();
 };
 
 Person.remove = function(id, result){
@@ -110,8 +116,8 @@ Person.remove = function(id, result){
 
                  result(null, res);
                 }
-                desconexion();
             });
+            desconexion();
 };
 
 /*
