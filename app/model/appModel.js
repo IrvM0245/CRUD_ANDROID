@@ -79,7 +79,7 @@ Person.createPerson = function (newPerson, result) {
 
 Person.getPersonById = function (personId, result) {
     conexion();
-        sql.query(`select * person where person.id ='${personId}'`, personId, function (err, res) {
+        sql.query(`select * FROM persona WHERE persona.id ='${personId}'`, personId, function (err, res) {
                 if(err) {
                     console.log("error: ", err);
                     result(err, null);

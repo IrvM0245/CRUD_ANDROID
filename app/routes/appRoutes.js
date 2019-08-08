@@ -6,7 +6,7 @@ module.exports = function(app) {
     .get(PersonList.list_all_persons)
     .post(PersonList.create_a_person);
 
-    app.route('/1')
+    app.route('/Message')
     .get(PersonList.mensaje_sencillo)
 
    app.route('/:personId')
