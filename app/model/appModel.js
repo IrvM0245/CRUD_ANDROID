@@ -1,4 +1,28 @@
-var sql = require('./db.js');
+var mysql      = require('mysql');
+var connection;
+function conexion(){
+        connection = mysql.createConnection({
+        host     : 'us-cdbr-iron-east-02.cleardb.net',
+        user     : 'b54cebd94c131a',
+        password : '785b23e4',
+        database : 'heroku_d6c3f5493729dde'
+      });
+      
+      connection.connect(function(err) {
+        if (err) {
+          console.error('error connecting: ' + err.stack);
+          return;
+        }
+      
+        console.log('connected as id ' + connection.threadId);
+      });
+
+}
+function desconexion(){
+    conection.c
+}
+var conection//
+//var sql = require('./db.js');
 
 //Restaurant object constructor
 var Person = function(person){
@@ -13,6 +37,7 @@ var Person = function(person){
 
 
 Person.getAllPerson = function (result) {
+    conexion();
     sql.query("Select * from persona", function (err, res) {
 
             if(err) {
@@ -20,13 +45,15 @@ Person.getAllPerson = function (result) {
                 result(null, err);
             }
             else{
-              console.log('Personas : ', res);
+              console.log('Personas: ', res);
              result(null, res);
             }
+            desconexion();
         });
 };
 
 Person.createPerson = function (newPerson, result) {
+    conexion();
         sql.query(`INSERT INTO persona (id, nombre, paterno, materno, rfc, domicilio,localidad) VALUES (0,'${newPerson.nombre}', '${newPerson.paterno}', '${newPerson.materno}', '${newPerson.rfc}','${newPerson.direccion}','${newPerson.localidad}');`, newPerson, function (err, res) {
 
                 if(err) {
@@ -37,10 +64,12 @@ Person.createPerson = function (newPerson, result) {
                     console.log(res.insertId);
                     result(null, res.insertId);
                 }
+                desconexion();
             });
 };
 
 Person.getPersonById = function (personId, result) {
+    conexion();
         sql.query(`select * person where person.id ='${personId}'`, personId, function (err, res) {
                 if(err) {
                     console.log("error: ", err);
@@ -49,10 +78,12 @@ Person.getPersonById = function (personId, result) {
                 else{
                     result(null, res);
                 }
+                desconexion();
             });
 };
 
 Person.updateById = function(id, person, result){
+    conexion();
   sql.query(`UPDATE persona SET nombre='${person.id}',materno='${person.materno}', paterno = '${person.paterno}',rfc='${person.rfc}',domicilio='${person.domicilio}',localidad='${person.localidad}' WHERE persona.id ='${id}';`, [person, id], function (err, res) {
           if(err) {
               console.log("error: ", err);
@@ -61,10 +92,12 @@ Person.updateById = function(id, person, result){
            else{
              result(null, res);
                 }
+                desconexion();
             });
 };
 
 Person.remove = function(id, result){
+    conexion();
      sql.query(`DELETE FROM persona WHERE persona.id ='${id}';`, id, function (err, res) {
 
                 if(err) {
@@ -75,6 +108,7 @@ Person.remove = function(id, result){
 
                  result(null, res);
                 }
+                desconexion();
             });
 };
 
