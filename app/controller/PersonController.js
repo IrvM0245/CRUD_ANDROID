@@ -1,5 +1,13 @@
 var Person = require('../model/appModel.js');
 
+
+
+
+exports.mensaje_sencillo = function (res){
+  Person.Mensaje(function(resp){ 
+    res.send(resp) 
+  });
+};
 exports.list_all_persons = function(req, res) {
   Person.getAllPerson(function(err, person) {
 
@@ -56,6 +64,7 @@ exports.delete_a_person = function(req, res) {
     res.json({ message: 'Persona eliminada' });
   });
 };
+
 
 /*exports.consult_restaurants = function(req, res) {
   Client.getRestaurants(function(err, restaurant) {
