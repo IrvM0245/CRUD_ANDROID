@@ -4,10 +4,11 @@ var Person = require('../model/appModel.js');
 
 
 exports.mensaje_sencillo = function (res){
-  Person.Mensaje(function(resp){ 
+  Person.Mensaje(function(error,resp){ 
     res.send(resp) 
   });
 };
+
 exports.list_all_persons = function(req, res) {
   Person.getAllPerson(function(err, person) {
 
@@ -15,7 +16,7 @@ exports.list_all_persons = function(req, res) {
     if (err)
       res.send(err);
       console.log('res', person);
-    res.send(person);
+    res.json(person);
   });
 };
 
