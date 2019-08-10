@@ -63,7 +63,7 @@ Person.getAllPerson = function (result) {
 
 Person.createPerson = function (newPerson, result) {
     conexion();
-        sql.query(`INSERT INTO persona (id, nombre, paterno, materno, rfc, domicilio,localidad) VALUES (0,'${newPerson.nombre}', '${newPerson.paterno}', '${newPerson.materno}', '${newPerson.rfc}','${newPerson.direccion}','${newPerson.localidad}');`, newPerson, function (err, res) {
+        sql.query(`INSERT INTO persona (id, nombre, paterno, materno, rfc, domicilio,localidad) VALUES (0,'${newPerson.nombre}', '${newPerson.paterno}', '${newPerson.materno}', '${newPerson.rfc}','${newPerson.domicilio}','${newPerson.localidad}');`, newPerson, function (err, res) {
 
                 if(err) {
                     console.log("error: ", err);
