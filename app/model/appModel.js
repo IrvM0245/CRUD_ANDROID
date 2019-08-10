@@ -74,7 +74,7 @@ Person.createPerson = function (newPerson, result) {
                     result(null, res.insertId);
                 }
             });
-            desconexion();
+ desconexion();
 };
 
 Person.getPersonById = function (personId, result) {
