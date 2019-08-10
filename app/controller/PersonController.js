@@ -24,12 +24,12 @@ exports.create_a_person = function(req, res) {
   var new_person = new Person(req.body);
 
   //handles null error
-   if( new_person){
+   /*if(true){
 
             res.status(400).send({ error:true, message: 'por favor ingresa datos de la persona' });
 
         }
-else{
+else{*/
 
   Person.createPerson(new_person, function(err, person) {
 
@@ -37,7 +37,7 @@ else{
       res.send(err);
     res.json(person);
   });
-}
+//}
 };
 
 exports.read_a_person = function(req, res) {
