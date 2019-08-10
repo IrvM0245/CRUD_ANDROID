@@ -24,7 +24,7 @@ exports.create_a_person = function(req, res) {
   var new_person = new Person(req.body);
 
   //handles null error
-   if( !new_person.id || !new_person.nombre || !new_person.materno || !new_person.paterno || !new_person.rfc || !new_person.domicilio || !new_person.localidad){
+   if( new_person){
 
             res.status(400).send({ error:true, message: 'por favor ingresa datos de la persona' });
 
