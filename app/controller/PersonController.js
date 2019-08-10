@@ -24,7 +24,7 @@ exports.create_a_person = function(req, res) {
   var new_person = new Person(req.body);
   console.log("REQ: "+req.body.id+"  RES " +res);
   //handles null error
-   if(true){
+   if(req.body.id!=0){
 
             res.status(400).send({ error:true, message: 'por favor ingresa datos de la persona' });
 
